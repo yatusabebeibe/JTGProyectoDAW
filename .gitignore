@@ -9,5 +9,6 @@
 .vscode/
 
 *.code-workspace
+nbproject/
 
 JTG*
