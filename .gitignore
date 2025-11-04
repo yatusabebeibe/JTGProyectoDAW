@@ -1,6 +1,7 @@
 .bash_history
 .bashrc
 .wget-hsts
+.profile
 .cache/
 .dotnet/
 .local/
