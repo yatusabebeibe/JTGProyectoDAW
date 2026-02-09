@@ -2,138 +2,218 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Jesús Temprano Gallego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAW2 - Jesús Temprano Gallego</title>
     <style>
-        * {box-sizing: border-box;}
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #4e9645;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            height: var(--altoHeader);
-        }
-        h1 {
-            margin: 0;
-        }
-        main {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            background: #ecf0f1;
-            margin: 10px 0;
-            padding: 15px;
-            border-left: 5px solid #34db34;
-            transition: 0.3s;
-            border-radius: 8px;
-        }
-        a > li:hover {
-            background: #d6f8d6;
-            border-left: 5px solid #70bc1a;
-        }
-        a.link > li:hover {
-            transform: scale(1.03);
-        }
-
-        footer {
-            margin: auto;
-            background-color: #459650;
-            text-align: center;
-            height: 150px;
-            color: white;
-        }
-        main {
-            text-align: center;
-            justify-content: center;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
         :root {
-            --altoHeader: 162px;
-            --altoFooter: 80px;
+            --primary: #4e9645;
+            --accent: #70bc1a;
+            --bg-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
         }
-        footer {
-            padding-top: 15px;
-            margin: auto;
-            background-color: #459650;
-            text-align: center;
-            height: var(--altoFooter);
-            color: white;
 
-            a {
-                text-decoration: aquamarine wavy underline;
-                color: aquamarine;
-                transition: 0.3s;
-            }
-            a:hover {
-                color: blue;
-                mix-blend-mode: multiply;
-                text-decoration: none;
-            }
-            p {line-height: 30px; display: inline-block;}
-            span {margin-right: 15px;}
-            img {
-                display: inline-block;
-                height: 25px;
-                translate: 0 25%;
-                transition: all .3s ease-in-out;
-            }
-            span img:hover {transform: scale(1.15);}
-            span > a {text-decoration: none;}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Evita el scroll */
+        }
+
+        /* Contenedor Principal Estilo Glass */
+        .wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #ffffff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
         main {
-            min-height: calc(100vh - var(--altoHeader) - var(--altoFooter) - 60px);
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            align-content: center;
+            padding: 20px 0;
         }
-        .link > * {
-            color: darkgreen;
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Resaltar Aplicación Final */
+        .card.featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(78, 150, 69, 0.2), rgba(112, 188, 26, 0.1));
+            border: 1px solid var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .featured h3 {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        footer {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--glass-border);
+            padding: 0 20px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .github-link img {
+            width: 24px;
+            filter: invert(1);
+            transition: 0.3s;
+        }
+
+        .github-link:hover img {
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        /* Estética de fondo (Círculos decorativos) */
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.15;
+            top: -100px;
+            left: -100px;
+        }
+
+        @media (max-width: 768px) {
+            body { overflow-y: auto; height: auto; }
+            .card.featured { grid-column: span 1; }
+            main { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- 😼 -->
-    <header>
-        <h1>CFGS - Desarrollo de Aplicaciones Web</h1>
-        <h3>Jesús Temprano Gallego</h3>
-        <p>Curso 2025/2026 - Grupo DAW2</p>
-    </header>
-    <!-- 😼 -->
-    <main>
-        <h2>ASIGNATURAS</h2>
-        <ul>
-            <a href="./JTGDWECProyectoDWEC/" class="link"><li>DWEC - Desarrollo Web en Entorno Cliente</li></a>
-            <a href="./JTGDWESProyectoDWES/" class="link"><li>DWES - Desarrollo Web en Entorno Servidor</li></a>
-            <a href="https://github.com/yatusabebeibe/JTGDAWProyectoDAW/blob/master/README.md" target="_blank" class="link"><li>DAW - Despliegue de Aplicaciones Web</li></a>
-            <a href="#"><li>DIW - Diseño de Interfaces Web</li></a>
-            <a href="./JTGCIBProyectoCiberseguridad/" class="link"><li>CIB - Fundamentos de Ciberseguridad</li></a>
-            <a href="#"><li>IPE 2 - Itinerario personal para la empleabilidad II</li></a>
-            <a href="#"><li>SASP - Sostenibilidad aplicada al sistema productivo</li></a>
-            <a href="#"><li>DASP - Digitalización aplicada a los sectores productivos</li></a>
-        </ul>
-    </main>
-    <!-- 😼 -->
-    <footer>
-        <span><a href="https://github.com/yatusabebeibe/" target="_blank">
-            <img src="./webroot/images/github.svg">
-        </a></span>
-        <p>Jesús Temprano Gallego | 17/12/2025</p>
-    </footer>
-    <!-- 😼 -->
-    <!-- muxixima glasia alvelto pol el marivilliosiximo achetemeele que te paxo chatgepete -->
+    <div class="blob"></div>
+
+    <div class="wrapper">
+        <header>
+            <h1>Jesús Temprano Gallego</h1>
+            <p>CFGS Desarrollo de Aplicaciones Web | Curso 25/26</p>
+        </header>
+
+        <main>
+            <a href="./JTGDWESAplicacionFinal/index.php" class="card featured">
+                <h3>🚀 Aplicación Final</h3>
+                <p>Proyecto donde intentamos integrar todo lo aprendido durante el ciclo.</p>
+            </a>
+
+            <a href="./JTGDWECProyectoDWEC/" class="card">
+                <h3>DWEC</h3>
+                <p>Desarrollo Web Entorno Cliente</p>
+            </a>
+
+            <a href="./JTGDWESProyectoDWES/" class="card">
+                <h3>DWES</h3>
+                <p>Desarrollo Web Entorno Servidor</p>
+            </a>
+
+            <a href="https://github.com/yatusabebeibe/JTGDAWProyectoDAW/blob/master/README.md" target="_blank" class="card">
+                <h3>DAW</h3>
+                <p>Despliegue de Aplicaciones Web</p>
+            </a>
+
+            <a href="#" class="card">
+                <h3>DIW</h3>
+                <p>Diseño de Interfaces Web</p>
+            </a>
+
+            <a href="./JTGCIBProyectoCiberseguridad/" class="card">
+                <h3>CIB</h3>
+                <p>Fundamentos de Ciberseguridad</p>
+            </a>
+
+            <a href="#" class="card">
+                <h3>IPE 2</h3>
+                <p>Itinerario para la empleabilidad</p>
+            </a>
+
+            <a href="#" class="card">
+                <h3>Digitalización</h3>
+                <p>Sectores Productivos</p>
+            </a>
+        </main>
+
+        <footer>
+            <div>© 2026 Jesús Temprano Gallego</div>
+            <a href="https://github.com/yatusabebeibe/" target="_blank" class="github-link">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Github">
+            </a>
+        </footer>
+    </div>
 </body>
 </html>
